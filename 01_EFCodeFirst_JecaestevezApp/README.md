@@ -71,3 +71,34 @@ It will be create a folder "Migrations" and the following files:
 * CreateDatabase.cs
 * CreateDatabase.Designer.cs
 * EfDbContextModelSnapshot.cs
+
+# 5 Update Database
+Open terminal and navigate to 01_EFCodeFirst_JecaestevezApp\DAL
+Using the terminal:
+> dotnet ef database update --startup-project ../ConsoleApp
+
+Using Package Manager Console:
+Select the DAL.JecaestevezApp.csproj and execute 
+> PM> update-database –verbose
+
+# 6 Use DBContext in the console App
+```
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine("Hello World!");
+
+            using (var context = new EfDbContext())
+            {
+                var itemType = new ItemType()
+                {
+                    Name = "Product"
+                };
+
+                context.Add(itemType);
+                context.SaveChanges();
+            }
+        }
+    }
+```
