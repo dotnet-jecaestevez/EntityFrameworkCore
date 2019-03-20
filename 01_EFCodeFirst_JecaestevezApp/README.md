@@ -57,3 +57,17 @@ Add DBContext
         public DbSet<ItemType> ItemsTypes { get; set; }
     }
 ```
+# 4 Create the first migration
+Open terminal and navigate to 01_EFCodeFirst_JecaestevezApp\DAL
+
+Using the terminal:
+> dotnet ef  migrations add CreateDatabase --startup-project ../ConsoleApp
+
+Using Package Manager Console:
+Select the DAL.JecaestevezApp.csproj and execute 
+> PM > add-migration CreateDatabase
+
+It will be create a folder "Migrations" and the following files:
+* CreateDatabase.cs
+* CreateDatabase.Designer.cs
+* EfDbContextModelSnapshot.cs
