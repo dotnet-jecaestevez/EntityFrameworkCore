@@ -30,4 +30,30 @@ Open terminal and navigate to 01_EFCodeFirst_JecaestevezApp\DAL
 Add to "DAL.JecaestevezApp.csproj"  EntityFrameworkCore.SqlServer and EntityFrameworkCore.Tools
 
 > dotnet add package Microsoft.EntityFrameworkCore.SqlServer
+
 > dotnet add package Microsoft.EntityFrameworkCore.Tools 
+
+> dotnet add package Microsoft.EntityFrameworkCore.Design 
+
+# 3 Add a simple class to be used in a new  DBContext
+Simple class "ItemType"
+```
+    public class ItemType
+    {
+        public int id { get; set; }
+        public string Name { get; set; }
+        public string Description { get; set; }
+    }
+```
+Add DBContext
+```
+    public class EfDbContext : DbContext
+    {
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            //TODO Extract connection string to a secret
+            optionsBuilder.UseSqlServer(@"Server=.\;Database=EFCodeFirstDB;Trusted_Connection=True;MultipleActiveResultSets=true");
+        }
+        public DbSet<ItemType> ItemsTypes { get; set; }
+    }
+```
