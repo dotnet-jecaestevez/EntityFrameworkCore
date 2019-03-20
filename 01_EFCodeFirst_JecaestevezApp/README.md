@@ -23,3 +23,11 @@ Add a refrence from ConsoleApp to DAL.JecaestevezApp
 
 Build the solution
  > dotnet build
+
+# 2 Add Entity Framework Core packages to 
+Open terminal and navigate to 01_EFCodeFirst_JecaestevezApp\DAL
+
+Add to "DAL.JecaestevezApp.csproj"  EntityFrameworkCore.SqlServer and EntityFrameworkCore.Tools
+
+> dotnet add package Microsoft.EntityFrameworkCore.SqlServer
+> dotnet add package Microsoft.EntityFrameworkCore.Tools 
